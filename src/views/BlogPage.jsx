@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from './component/Footer';
-import Header from './component/header';
+import Header from './component/Header';
 
 const BlogPage = () => {
   const { blogId } = useParams();

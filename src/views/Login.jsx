@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion';
 import Footer from './component/Footer';
-import Header from './component/header';
+import Header from './component/Header';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {

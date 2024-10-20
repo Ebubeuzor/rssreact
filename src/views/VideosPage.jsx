@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import Header from './component/header';
+import Header from './component/Header';
 import Footer from './component/Footer';
 
 const VideosPage = () => {

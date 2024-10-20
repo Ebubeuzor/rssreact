@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ShoppingCart, Search } from 'lucide-react';
-import Header from './component/header';
+import Header from './component/Header';
 import Footer from './component/Footer';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LoadingSpinner from './component/LoadingSpinner';
 import { ArrowLeft, Heart } from 'lucide-react';
-import Header from './component/header';
+import Header from './component/Header';
 import Footer from './component/Footer';
 
 const ProductPage = () => {

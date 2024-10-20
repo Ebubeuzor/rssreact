@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './component/Footer';
-import Header from './component/header';
+import Header from './component/Header';
 
 export default function AccountSettings() {
   const [name, setName] = useState('');

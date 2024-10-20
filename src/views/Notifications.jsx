@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LoadingSpinner from './component/LoadingSpinner';
-import Header from './component/header';
+import Header from './component/Header';
 import Footer from './component/Footer';
 
 export default function Notifications() {

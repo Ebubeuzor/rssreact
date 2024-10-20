@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import LoadingSpinner from './component/LoadingSpinner';
-import Header from './component/header';
+import Header from './component/Header';
 import Footer from './component/Footer';
 import { useNavigate } from 'react-router-dom';
 import { Star, ShoppingCart } from 'lucide-react';

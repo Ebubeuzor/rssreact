@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Header from './component/header'
+import Header from './component/Header'
 import Navigation from './component/Navigation'
 import HeroSection from './component/HeroSection'
 import SearchBar from './component/SearchBar'

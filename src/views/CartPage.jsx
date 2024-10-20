@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Header from './component/header';
+import Header from './component/Header';
 import LoadingSpinner from './component/LoadingSpinner';
 import { Minus, Plus } from 'lucide-react';
 import Footer from './component/Footer';
