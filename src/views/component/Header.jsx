@@ -71,6 +71,7 @@ export default function Header() {
                       </span>
                     )}
                   </button>
+                  <button onClick={() => moveToAnotherPage("admin/dashboard")} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Admin Dashboard</button>
                   <button onClick={() => moveToAnotherPage("account-settings")} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Account Settings</button>
                   <button onClick={() => logout()} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Logout</button>
                 </div>
