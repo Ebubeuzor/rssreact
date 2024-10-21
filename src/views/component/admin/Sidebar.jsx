@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Package, Layers, Users, FileText, Video } from 'lucide-react'; // Icons for sidebar
+import { Home, Package, Layers, Users, FileText, Video, Download } from 'lucide-react'; // Icons for sidebar
 
 const Sidebar = () => {
   return (
@@ -26,6 +26,15 @@ const Sidebar = () => {
         </Link>
         <Link to="/admin/videos" className="flex items-center py-2 px-6 hover:bg-[#F27C22]">
           <Video className="mr-3" /> Videos
+        </Link>
+        <Link to="/admin/recipes" className="flex items-center py-2 px-6 hover:bg-[#F27C22]">
+          <FileText className="mr-3" /> Recipes
+        </Link>
+        <Link to="/admin/ebooks" className="flex items-center py-2 px-6 hover:bg-[#F27C22]">
+          <Download className="mr-3" /> Ebooks
+        </Link>
+        <Link to="/admin/orders" className="flex items-center py-2 px-6 hover:bg-[#F27C22]">
+          <FileText className="mr-3" /> Orders
         </Link>
       </nav>
     </div>

@@ -22,6 +22,9 @@ import Categories from './views/admin/Categories';
 import Users from './views/admin/Users';
 import VideoUpload from './views/admin/VideoUpload';
 import Blog from './views/admin/Blog';
+import Recipes from './views/admin/Recipes';
+import EbookUpload from './views/admin/EbookUpload';
+import Orders from './views/admin/Orders';
 
 function App() {
   
@@ -54,9 +57,9 @@ function App() {
         <Route path="/admin/blog" element={<Blog />} />
         <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/videos" element={<VideoUpload />} />
-        {/* <Route path="/admin/recipes" element={<RecipeUpload />} />
+        <Route path="/admin/recipes" element={<Recipes />} />
         <Route path="/admin/ebooks" element={<EbookUpload />} />
-        <Route path="/admin/orders" element={<Orders />} /> */}
+        <Route path="/admin/orders" element={<Orders />} />
 
       </Routes>
     </Router>
