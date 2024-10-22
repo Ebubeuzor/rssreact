@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, TruckIcon } from 'lucide-react';
+import { Search, TruckIcon, Building2, X } from 'lucide-react';
 import Header from './component/Header';
 import Footer from './component/Footer';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,7 @@ const products = [
 
 const RSSWholesalePage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const filteredProducts = selectedCategory === 'All' 
@@ -24,20 +25,18 @@ const RSSWholesalePage = () => {
     : products.filter(product => product.category === selectedCategory);
 
   const productPage = (id) => {
-    navigate(`/productPage/${id}`)
-  }
+    navigate(`/productPage/${id}`);
+  };
   
   return (
     <>
       <Header/>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold mb-8">RSS Wholesale</h1>
-        
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
           <div className="flex flex-wrap gap-2">
             <button 
-              className={`px-4 py-2 rounded text-sm ${selectedCategory === 'All' ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+              className={`px-4 py-2 rounded text-sm ${selectedCategory === 'All' ? 'bg-orange-500 text-white' : 'bg-gray-200'}`}
               onClick={() => setSelectedCategory('All')}
             >
               All
@@ -45,7 +44,7 @@ const RSSWholesalePage = () => {
             {categories.map(category => (
               <button 
                 key={category}
-                className={`px-4 py-2 rounded text-sm ${selectedCategory === category ? 'bg-green-500 text-white' : 'bg-gray-200'}`}
+                className={`px-4 py-2 rounded text-sm ${selectedCategory === category ? 'bg-orange-500 text-white' : 'bg-gray-200'}`}
                 onClick={() => setSelectedCategory(category)}
               >
                 {category}
@@ -73,22 +72,80 @@ const RSSWholesalePage = () => {
                 <p className="text-gray-600 mb-2">{product.category}</p>
                 <p className="text-green-600 font-bold">₦{product.price.toLocaleString()}</p>
                 <p className="text-sm text-gray-500 mt-2">Minimum Order: {product.minOrder} units</p>
-                <button className="mt-4 w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 transition-colors">
+                <button className="mt-4 w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-500 transition-colors">
                   Add to Cart
                 </button>
               </div>
             </div>
           ))}
         </div>
-
-        <div className="mt-12 bg-gray-100 p-6 rounded-lg">
-          <h2 className="text-2xl font-semibold mb-4 flex items-center">
-            <TruckIcon className="mr-2" /> Bulk Order Information
-          </h2>
-          <p className="mb-2">For large wholesale orders, please contact our sales team:</p>
-          <p className="font-bold">Phone: +234 123 456 7890</p>
-          <p className="font-bold">Email: wholesale@rssfoods.com</p>
+        
+        {/* New Partner Section */}
+        <div className="mt-12 bg-gradient-to-r from-green-50 to-green-100 rounded-xl shadow-lg overflow-hidden">
+          <div className="p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex-1 space-y-4">
+              <div className="flex items-center gap-3">
+                <Building2 className="text-green-600 w-8 h-8" />
+                <h2 className="text-2xl font-bold text-gray-800">Partner with Us</h2>
+              </div>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Are you a supermarket or distributor? We offer competitive wholesale prices and reliable supply. Contact us to discuss partnership opportunities.
+              </p>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="mt-4 px-6 py-3 bg-orange-500 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 transform hover:scale-105"
+              >
+                Contact Us
+              </button>
+            </div>
+            <div className="hidden md:block">
+              <TruckIcon className="w-32 h-32 text-green-600 opacity-20" />
+            </div>
+          </div>
         </div>
+
+        {/* Partnership Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-xl shadow-xl w-full max-w-md relative">
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="absolute right-4 top-4 text-gray-400 hover:text-gray-600"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Partnership Inquiry</h3>
+                <form className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Business Name</label>
+                    <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Contact Person</label>
+                    <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                    <input type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <textarea className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent h-32"></textarea>
+                  </div>
+                  <button type="submit" className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                    Submit Inquiry
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     
       <Footer/>
