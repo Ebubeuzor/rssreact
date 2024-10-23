@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../header';
+import Header from '../Header';
 import { Download, FileText, Home, Layers, Menu, Package, Users, Video, X } from 'lucide-react';
 
 const AdminLayout = ({ children }) => {
