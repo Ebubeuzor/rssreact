@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import Header from '../header';
 import { Download, FileText, Home, Layers, Menu, Package, Users, Video, X } from 'lucide-react';
 
 const AdminLayout = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen">
-      {/* Mobile header with menu button */}
+    <div className="flex flex-col h-screen">
+      <Header />
+      
+      {/* Mobile header */}
       <div className="lg:hidden bg-[#1F205D] text-white p-4 flex items-center justify-between">
         <span className="text-xl font-bold">Admin Panel</span>
         <button 
@@ -17,14 +20,14 @@ const AdminLayout = ({ children }) => {
         </button>
       </div>
 
-      <div className="flex">
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <aside 
           className={`
             ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
             lg:translate-x-0
             fixed lg:static
-            top-0 lg:top-auto
+            top-0
             left-0
             z-40
             w-64
@@ -32,7 +35,9 @@ const AdminLayout = ({ children }) => {
             bg-[#1F205D]
             text-white
             transition-transform duration-300 ease-in-out
-            overflow-y-auto
+            lg:h-full
+            flex
+            flex-col
           `}
         >
           {/* Mobile close button */}
@@ -49,8 +54,8 @@ const AdminLayout = ({ children }) => {
             Admin Panel
           </div>
 
-          <nav className="mt-6">
-            {/* Sidebar links - clicking closes sidebar on mobile */}
+          <nav className="flex-1 mt-6 space-y-2">
+            {/* Sidebar links */}
             <SidebarLink href="/admin/dashboard" icon={<Home size={20} />} onClick={() => setSidebarOpen(false)}>
               Dashboard
             </SidebarLink>
@@ -90,7 +95,7 @@ const AdminLayout = ({ children }) => {
         )}
 
         {/* Main content */}
-        <main className="flex-1 min-h-screen bg-gray-100 w-full">
+        <main className="flex-1 overflow-y-auto bg-gray-100 w-full">
           <div className="p-4 lg:p-6">
             {children}
           </div>
