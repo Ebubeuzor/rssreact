@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header';
 import { Download, FileText, Home, Layers, Menu, Package, Users, Video, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AdminLayout = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -107,14 +108,14 @@ const AdminLayout = ({ children }) => {
 
 // Sidebar link component
 const SidebarLink = ({ href, icon, children, onClick }) => (
-  <a
-    href={href}
+  <Link
+    to={href}
     className="flex items-center py-2 px-6 hover:bg-[#F27C22] transition-colors duration-200"
     onClick={onClick}
   >
     <span className="mr-3">{icon}</span>
     {children}
-  </a>
+  </Link>
 );
 
 export default AdminLayout;
