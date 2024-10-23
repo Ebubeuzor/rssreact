@@ -17,16 +17,18 @@ const Products = () => {
         stock: 50,
         minimumUnit: 5,
         discountPrice: 18000,
+        size: 5 // 5kg box
       },
       {
         id: 2,
-        name: 'Rice (50kg)',
+        name: 'Rice',
         price: 30000,
         category: 'Grains',
         type: 'Wholesale',
         stock: 20,
         minimumUnit: 10,
         discountPrice: 25000,
+        size: 50 // 50kg bag
       },
     ]);
   }, []);
@@ -54,11 +56,12 @@ const Products = () => {
           </div>
         )}
 
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <div className="bg-white shadow-md rounded-lg overflow-auto">
           <table className="w-full table-auto">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size (kg)</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
@@ -71,13 +74,30 @@ const Products = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {products.map((product, index) => (
                 <tr key={product.id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{product.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₦{product.price.toLocaleString()}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.category}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.type}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.stock}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.minimumUnit}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₦{product.discountPrice.toLocaleString()}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {product.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.size}kg
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    ₦{product.price.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.category}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.type}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.stock}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {product.minimumUnit}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    ₦{product.discountPrice.toLocaleString()}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button 
                       onClick={() => setEditingProduct(product)} 
