@@ -78,7 +78,14 @@ const ContentColumns = ({ content, isLoading }) => {
                       {items.slice(0, 3).map((item, index) => (
                         <li key={index} className="flex items-start">
                           <div className="h-1.5 w-1.5 rounded-full bg-gray-300 mt-2 mr-3"></div>
-                          <span className="text-gray-700 text-sm">{item}</span>
+                          <span className="text-gray-700 text-sm">
+                          <Link
+                            to={`/${category.toLowerCase()}/${index + 1}`}
+                            className="text-blue-600 hover:underline"
+                          >
+                            {item}
+                          </Link>
+                          </span>
                         </li>
                       ))}
                     </ul>
