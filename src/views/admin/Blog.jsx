@@ -64,47 +64,48 @@ const BlogForm = ({ blog, onSubmit, onCancel }) => {
   };
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      onSubmit(formData);
-    }} className="space-y-4">
-      <input
-        type="text"
-        value={formData.title}
-        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        placeholder="Blog Title"
-        className="w-full px-3 py-2 border rounded"
-      />
-      <textarea
-        value={formData.content}
-        onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-        placeholder="Blog Content"
-        rows="5"
-        className="w-full px-3 py-2 border rounded"
-      />
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Upload Image
-        </label>
+    <div className="overflow-auto">
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(formData);
+      }} className="space-y-4">
         <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          className="w-full"
+          type="text"
+          value={formData.title}
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+          placeholder="Blog Title"
+          className="w-full px-3 py-2 border rounded"
         />
-      </div>
-      {imagePreview && (
-        <img src={imagePreview} alt="Preview" className="w-full h-64 object-cover rounded" />
-      )}
-      <div className="flex justify-end space-x-2">
-        <button type="button" onClick={onCancel} className="px-4 py-2 border rounded">
-          Cancel
-        </button>
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-          {blog ? 'Update' : 'Create'} Blog
-        </button>
-      </div>
-    </form>
+        <textarea
+          value={formData.content}
+          onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+          placeholder="Blog Content"
+          rows="5"
+          className="w-full px-3 py-2 border rounded"
+        />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Upload Image
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="w-full"
+          />
+        </div>
+        
+        <div className="flex justify-end space-x-2">
+          <button type="button" onClick={onCancel} className="px-4 py-2 border rounded">
+            Cancel
+          </button>
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+            {blog ? 'Update' : 'Create'} Blog
+          </button>
+        </div>
+      </form>
+    </div>
+    
   );
 };
 
@@ -173,8 +174,8 @@ const Blog = () => {
       </button>
 
       {isFormVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 overflow-auto">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-screen overflow-y-auto">
             <h2 className="text-xl font-bold mb-4">{editingBlog ? 'Edit Blog' : 'Create New Blog'}</h2>
             <BlogForm
               blog={editingBlog}
@@ -187,6 +188,7 @@ const Blog = () => {
           </div>
         </div>
       )}
+
 
       {blogs.map((blog) => (
         <BlogPost
