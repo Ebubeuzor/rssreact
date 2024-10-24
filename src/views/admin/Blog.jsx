@@ -5,7 +5,7 @@ const BlogPost = ({ blog, onEdit, onDelete, onAddComment }) => {
   const [comment, setComment] = useState('');
 
   return (
-    <div className="bg-white shadow-md rounded-lg mb-6 overflow-hidden">
+    <div className="bg-white shadow-md rounded-lg mb-6 overflow-auto">
       <div className="p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">{blog.title}</h2>
